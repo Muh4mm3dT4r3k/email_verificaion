@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    url: jdbc:postgres://localhost:5432/auth
+    username: username
+    password: password;
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: localhost
+    protocol: smtp
+    port: 1025
+    username: mohamed
+    password: password
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connecntiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000
+      refresh-token:
+        expiration: 604800000
+  mailing:
+    frontend:
+      confirmation-url: http://localhost:4000/activate
+  file:
+    uploads:
+      photos-output-path: ./uploads
+server:
+  port: 8181

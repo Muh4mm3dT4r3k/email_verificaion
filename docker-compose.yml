@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres
+    container_name: app_db
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: auth
+    ports:
+      - '5432:5432'
+    restart: unless-stopped
+    networks:
+      - spring_app
+
+  mail:
+    image: maildev/maildev
+    container_name: spring_mail
+    ports:
+      - '1080:1080'
+      - '1025:1025'
+networks:
+  spring_app:
+    driver: bridge
